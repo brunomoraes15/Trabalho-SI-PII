@@ -6,9 +6,18 @@ class ScrappingTool:
     def __init__(self, url):
         self.url = url
         self.browser = start_browser()
-        
-    def exit(self):
-        self.browser.quit()
+
+
+    def save_data(self, data):
+        try:
+            with open("data.csv", "w", encoding="utf-8") as file:
+                file.write(data)
+
+            pass
+
+        except Exception as e:
+            print(f"error while saving the data {e}")
+            return None
         
     def collect_data(self):
         try:
@@ -17,16 +26,27 @@ class ScrappingTool:
             try:
                 
                 print("catch the rainbow")
-                title_test = self.browser.find_element(By.XPATH, "/html/body/div[3]/div[2]/div[3]/div[4]/div[1]/div/div[1]/div[12]/div[1]/div")
-                print(title_test.text)
-                self.exit()
+
+                content_a = self.browser.find_element(By.XPATH, xpath_a)
+                #print(content_a.text)
+                raw_data = content_a.text
+
+                content_b = self.browser.find_element(By.XPATH, xpath_b)
+                #print(content_b.text)
+                raw_data += content_b.text
+
+                self.save_data(raw_data)
+                self.browser.quit()
+                
 
             except Exception as e:
-                print(f"Erro ao acessar website {e}")
+                print(f"error while accessing the web page {e}")
 
         except Exception as e:
-            print(f"Erro ao acessar o navegador {e}")
+            print(f"error while accessing the web browser {e}")
             return None
+
+    
         
 if __name__ == "__main__":
     scrapper = ScrappingTool(website)
