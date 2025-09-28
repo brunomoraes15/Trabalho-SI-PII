@@ -8,7 +8,7 @@ def start_browser():
         print('starting browser')
         options = FirefoxOptions()
         print('setting up headless mode')
-        options.add_argument("--headless")  
+        #options.add_argument("--headless")  
 
         print('gathering service via GeckoDriverManager')
         service = FirefoxService(executable_path=GeckoDriverManager().install())

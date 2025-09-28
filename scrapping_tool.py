@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from browser import start_browser
-#from config import *
+from config import *
 
 class ScrappingTool:
     def __init__(self, url):
@@ -29,6 +29,5 @@ class ScrappingTool:
             return None
         
 if __name__ == "__main__":
-    url = "https://www.google.com"#"https://www.dailymail.co.uk/news/article-2523930/Jesus-famous-person-history-according-software-algorithm.html"
-    scrapper = ScrappingTool(url)
-    #scrapper.collect_data()
+    scrapper = ScrappingTool(website)
+    scrapper.collect_data()
