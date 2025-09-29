@@ -18,20 +18,29 @@ class ScrappingTool:
             print(f"error while saving the data {e}")
             return None
         
+    def filter_data(self):
+        filtered_data = []
+        with open("data.csv", "r", encoding="utf-8") as data:
+            for i in data:
+                cleaned_line = re.sub(r"^\d+[\W\s]*", "", i).replace(",", "")
+                filtered_data.append(cleaned_line)
+
+        with open("data_fixed.csv", "w", encoding="utf-8") as new_file:
+            new_file.write("".join(filtered_data))
 
     def collect_data(self):
         try:
             self.browser.get(self.url)
             try:
                 
-                print("we'd catch the rainbow")
-
+                print("we believed")
                 raw_data_a = self.browser.find_element(By.XPATH, xpath_a).text
                 raw_data_b = self.browser.find_element(By.XPATH, xpath_b).text
 
                 self.save_data(raw_data_a, raw_data_b)
                 self.filter_data()
                 self.browser.quit()
+                print("we'd catch the rainbow")
 
             except Exception as e:
                 print(f"error while scrapping data {e}")
