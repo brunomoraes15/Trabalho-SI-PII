@@ -5,18 +5,15 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 def start_browser():
     try:
-        print('starting browser')
         options = FirefoxOptions()
-        print('setting up headless mode')
         options.add_argument("--headless")  
 
-        print('gathering service via GeckoDriverManager')
         service = FirefoxService(executable_path=GeckoDriverManager().install())
-        print('launching Firefox...')
+        print('launching firefox...')
         driver = webdriver.Firefox(service=service, options=options)
         return driver
     
     except Exception as e:
         print("could not start web browser")
-        print("Error:", e)
+        print("error:", e)
         return None
