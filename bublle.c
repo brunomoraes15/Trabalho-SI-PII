@@ -25,16 +25,8 @@ int main(){
     for(int x=0;x<100;x++){
         printf("%s\n", nm[x].nome);
     }
-    for(int j=0;j<100-1;j++){
-        for(i=0; i<100-j-1; i++){
-            if(strcmp(nm[i].nome,nm[i+1].nome)>0){
-                strcpy(temp,nm[i].nome);
-                strcpy(nm[i].nome,nm[i+1].nome);
-                strcpy(nm[i+1].nome,temp);
-            }
-        }
-    }
-    printf("\n");
+    //bublle sort
+    pintf("\n");
     for(int x=0;x<100;x++){
         printf("%s\n", nm[x].nome);
     }
