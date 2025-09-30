@@ -25,7 +25,15 @@ int main(){
     for(int x=0;x<100;x++){
         printf("%s\n", nm[x].nome);
     }
-    //bublle sort
+    for(i=0;i<100-1;i++){
+        for(int j=0;j<100-i-1;j++){
+            if(strcmp(nm[j].nome, nm[j+1].nome)>0){
+                strcpy(temp,nm[j].nome);
+                strcpy(nm[j].nome,nm[j+1].nome);
+                strcpy(nm[j+1].nome,nm[j].nome);
+            }
+        }
+    }
     pintf("\n");
     for(int x=0;x<100;x++){
         printf("%s\n", nm[x].nome);
