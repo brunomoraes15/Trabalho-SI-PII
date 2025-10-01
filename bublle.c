@@ -30,13 +30,22 @@ int main(){
             if(strcmp(nm[j].nome, nm[j+1].nome)>0){
                 strcpy(temp,nm[j].nome);
                 strcpy(nm[j].nome,nm[j+1].nome);
-                strcpy(nm[j+1].nome,nm[j].nome);
+                strcpy(nm[j+1].nome,temp);
             }
         }
     }
-    pintf("\n");
+    printf("\n");
     for(int x=0;x<100;x++){
         printf("%s\n", nm[x].nome);
     }
+    arquivo=fopen("dadoordenado.csv", "w");
+    if(arquivo==NULL){
+        printf("ERRO!!!!");
+        return 1;
+    }
+    for(i=0;i<100;i++){
+        fprintf(arquivo, "%s\n" , nm[i].nome);
+    }
+    fclose(arquivo);
     return 0;
 }
